@@ -1,0 +1,101 @@
+"""
+Database information
+"""
+type DbInfo {
+	"""
+	The name of the database.
+	"""
+	datname: String!
+	"""
+	The character set encoding of the database.
+	"""
+	encoding: Int!
+	"""
+	The collation of the database.
+	"""
+	datcollate: String!
+	"""
+	The character classification of the database.
+	"""
+	datctype: String!
+	"""
+	Whether the database is a template.
+	"""
+	datistemplate: Boolean!
+	"""
+	Whether connections are allowed to the database.
+	"""
+	datallowconn: Boolean!
+	"""
+	The connection limit for the database.
+	"""
+	datconnlimit: Int!
+}
+
+type Query {
+	databases(
+		"""
+		Filter databases by name.
+		"""
+		dbnamePattern: String,
+		"""
+		Omit templates.
+		"""
+		omitTemplates: Boolean
+	): [DbInfo!]!
+	"""
+	Lists schemas in the database.
+	"""
+	schemas(
+		"""
+		Filter schemas by name.
+		"""
+		schemaNamePattern: String
+	): [Schema!]!
+}
+
+"""
+Represents a PostgreSQL schema.
+"""
+type Schema {
+	"""
+	The name of the catalog.
+	"""
+	catalogName: String
+	"""
+	The name of the schema.
+	"""
+	schemaName: String
+	"""
+	The owner of the schema.
+	"""
+	schemaOwner: String
+	"""
+	The default character set catalog.
+	"""
+	defaultCharacterSetCatalog: String
+	"""
+	The default character set schema.
+	"""
+	defaultCharacterSetSchema: String
+	"""
+	The default character set name.
+	"""
+	defaultCharacterSetName: String
+	"""
+	The SQL path.
+	"""
+	sqlPath: String
+}
+
+"""
+Directs the executor to include this field or fragment only when the `if` argument is true.
+"""
+directive @include(if: Boolean!) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+"""
+Directs the executor to skip this field or fragment when the `if` argument is true.
+"""
+directive @skip(if: Boolean!) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+schema {
+	query: Query
+}
