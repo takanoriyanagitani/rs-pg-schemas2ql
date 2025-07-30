@@ -1,0 +1,59 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "(\n            SELECT\n                datname,\n                encoding,\n                datcollate,\n                datctype,\n                datistemplate,\n                datallowconn,\n                datconnlimit\n            FROM pg_database\n            WHERE\n                (datname LIKE $1)\n                AND (datistemplate = false OR $2 = false)\n        )",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "datname",
+        "type_info": "Name"
+      },
+      {
+        "ordinal": 1,
+        "name": "encoding",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 2,
+        "name": "datcollate",
+        "type_info": "Name"
+      },
+      {
+        "ordinal": 3,
+        "name": "datctype",
+        "type_info": "Name"
+      },
+      {
+        "ordinal": 4,
+        "name": "datistemplate",
+        "type_info": "Bool"
+      },
+      {
+        "ordinal": 5,
+        "name": "datallowconn",
+        "type_info": "Bool"
+      },
+      {
+        "ordinal": 6,
+        "name": "datconnlimit",
+        "type_info": "Int4"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text",
+        "Bool"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "f1752deacba384987176319661b00f3400c9a162bd123d060d3fc6fd6457642e"
+}

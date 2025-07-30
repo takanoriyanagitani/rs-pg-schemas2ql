@@ -1,0 +1,58 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            SELECT\n                catalog_name,\n                schema_name,\n                schema_owner,\n                default_character_set_catalog,\n                default_character_set_schema,\n                default_character_set_name,\n                sql_path\n            FROM information_schema.schemata\n            WHERE\n                schema_name LIKE $1\n            ORDER BY schema_name\n        ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "catalog_name",
+        "type_info": "Name"
+      },
+      {
+        "ordinal": 1,
+        "name": "schema_name",
+        "type_info": "Name"
+      },
+      {
+        "ordinal": 2,
+        "name": "schema_owner",
+        "type_info": "Name"
+      },
+      {
+        "ordinal": 3,
+        "name": "default_character_set_catalog",
+        "type_info": "Name"
+      },
+      {
+        "ordinal": 4,
+        "name": "default_character_set_schema",
+        "type_info": "Name"
+      },
+      {
+        "ordinal": 5,
+        "name": "default_character_set_name",
+        "type_info": "Name"
+      },
+      {
+        "ordinal": 6,
+        "name": "sql_path",
+        "type_info": "Varchar"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text"
+      ]
+    },
+    "nullable": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "hash": "19c5e215ebab988ac0120e99d7943226e3d04886845d9e690b685106f6deba13"
+}

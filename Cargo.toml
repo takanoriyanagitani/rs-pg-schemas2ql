@@ -1,0 +1,25 @@
+[package]
+name = "rs-pg-schemas2ql"
+version = "0.1.0"
+edition = "2024"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+unwrap_used = "forbid"
+
+[dependencies.async-graphql]
+version = "7"
+default-features = false
+features = [
+]
+
+[dependencies.sqlx]
+version = "0"
+default-features = false
+features = [
+	"macros",
+	"postgres",
+	"runtime-tokio",
+]
